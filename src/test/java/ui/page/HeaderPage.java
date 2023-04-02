@@ -20,16 +20,19 @@ public class HeaderPage extends BasePageClass{
         personalAccountButton.click();
         return loadLoginPage();
     }
+
     @Step("Click account Button from header page")
     public ProfilePage clickAccountAuthButton() {
         personalAccountButton.click();
         return loadProfilePage();
     }
+
     @Step("Click Constructor Button from header page")
     public ConstructorPage clickConstructorButton() {
         constructorButton.click();
         return loadConstructorPage();
     }
+
     @Step("Click Image logo from header page")
     public ConstructorPage clickLogoImage() {
         logoImage.click();

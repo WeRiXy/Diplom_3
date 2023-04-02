@@ -3,7 +3,7 @@ package ui.uitests;
 import com.github.javafaker.Faker;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import ui.constants.URL;
+import ui.constants.Url;
 import api.general_action.UserAction;
 import api.generators.GeneratorTestUser;
 import api.jsonobjects.user.User;
@@ -17,8 +17,7 @@ import ui.settings.Browser;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverConditions.url;
-import static ui.constants.URL.LOGIN;
-import static ui.constants.URL.MAIN;
+import static ui.constants.Url.LOGIN;
 
 @Feature(value = "User registration")
 @Story(value = "Negative tests")
@@ -51,8 +50,8 @@ public class UserRegistrationNegativeTest extends Browser {
         open(LOGIN, LoginPage.class)
                 .clickRegistryLink()
                 .register(user)
-                .shouldBeDisplayedWrongPasswordText();
-        webdriver().shouldHave(url(URL.REGISTRY));
+                .waitUntilDisplayedWrongPasswordText();
+        webdriver().shouldHave(url(Url.REGISTRY));
     }
 
     @After

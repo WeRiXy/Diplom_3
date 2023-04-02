@@ -17,7 +17,7 @@ import ui.settings.Browser;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.webdriver;
 import static com.codeborne.selenide.WebDriverConditions.url;
-import static ui.constants.URL.LOGIN;
+import static ui.constants.Url.LOGIN;
 
 @Feature(value = "User registration")
 @Story(value = "Positive tests")

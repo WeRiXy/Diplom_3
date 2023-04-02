@@ -12,7 +12,7 @@ import ui.settings.Browser;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverConditions.url;
-import static ui.constants.URL.*;
+import static ui.constants.Url.*;
 
 @Feature(value = "Clicking on links")
 public class OpeningProfilePageTest extends Browser {
@@ -25,6 +25,7 @@ public class OpeningProfilePageTest extends Browser {
         localStorage().setItem("accessToken",registeredUser.userResponse.getAccessToken());
         localStorage().setItem("refreshToken",registeredUser.userResponse.getRefreshToken());
     }
+
     @After
     public void deleteTestData() {
         UserAction.delete(registeredUser.userResponse);
@@ -35,7 +36,7 @@ public class OpeningProfilePageTest extends Browser {
     public void openProfilePage() {
         page(HeaderPage.class)
                 .clickAccountAuthButton()
-                .shouldBeDisplayedProfileLink();
+                .waitUntilDisplayedProfileLink();
         webdriver().shouldHave(url(PROFILE));
     }
 }

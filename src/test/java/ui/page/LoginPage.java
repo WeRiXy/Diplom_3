@@ -44,6 +44,7 @@ public class LoginPage extends BasePageClass{
         clickEnterButton();
         return this;
     }
+
     public LoginPage login(User user) {
         login(user.getEmail(),user.getPassword());
         return this;
@@ -54,14 +55,8 @@ public class LoginPage extends BasePageClass{
         return loadConstructorPage();
     }
 
-
-
-    public ConstructorPage loadingMainPage() {
-        return page(ConstructorPage.class).waitForLoadPage();
-    }
-
-    @Step("Check login button is displayed")
-    public LoginPage shouldBeDisplayedLoginButton() { loginButton.shouldBe(visible); return this; }
+    @Step("Wait until login button is displayed")
+    public LoginPage waitUntilDisplayedLoginButton() { loginButton.shouldBe(visible); return this; }
 
     @Override
     public LoginPage waitForLoadPage() {

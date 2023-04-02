@@ -14,7 +14,7 @@ import ui.settings.Browser;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverConditions.url;
-import static ui.constants.URL.*;
+import static ui.constants.Url.*;
 
 @Feature(value = "Login user")
 public class LoginTest extends Browser {
@@ -33,10 +33,11 @@ public class LoginTest extends Browser {
         open(MAIN, ConstructorPage.class)
                 .clickAccountButton()
                 .loginValidUser(registeredUser.user)
-                .shouldBeDisplayedCreateOrderButton();
+                .waitUntilDisplayedCreateOrderButton();
 
         webdriver().shouldHave(url(MAIN));
     }
+
     @Test
     @DisplayName("Login user from HeaderPage")
     public void loginFromMainPageByLink() {
@@ -44,7 +45,7 @@ public class LoginTest extends Browser {
         open(MAIN, HeaderPage.class)
                 .clickPersonalAccountButton()
                 .loginValidUser(registeredUser.user)
-                .shouldBeDisplayedCreateOrderButton();
+                .waitUntilDisplayedCreateOrderButton();
 
         webdriver().shouldHave(url(MAIN));
     }
@@ -56,7 +57,7 @@ public class LoginTest extends Browser {
         open(REGISTRY, RegistryPage.class)
                 .clickLoginLink()
                 .loginValidUser(registeredUser.user)
-                .shouldBeDisplayedCreateOrderButton();
+                .waitUntilDisplayedCreateOrderButton();
 
         webdriver().shouldHave(url(MAIN));
     }
@@ -68,7 +69,7 @@ public class LoginTest extends Browser {
         open(RECOVERY_PASSWORD, PasswordRecoveryPage.class)
                 .clickLoginLink()
                 .loginValidUser(registeredUser.user)
-                .shouldBeDisplayedCreateOrderButton();
+                .waitUntilDisplayedCreateOrderButton();
 
         webdriver().shouldHave(url(MAIN));
     }

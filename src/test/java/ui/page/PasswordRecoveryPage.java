@@ -12,12 +12,12 @@ public class PasswordRecoveryPage extends BasePageClass{
     private SelenideElement loginLink;
     @FindBy(how = How.XPATH,using = "//button[text()='Восстановить']")
     private SelenideElement recoveryButton;
+
     @Step("Click link login")
     public LoginPage clickLoginLink () {
         loginLink.click();
         return loadLoginPage();
     }
-
 
     @Override
     public PasswordRecoveryPage waitForLoadPage() {

@@ -1,6 +1,6 @@
 package ui.constants;
 
-public class URL {
+public class Url {
     public static String MAIN = "https://stellarburgers.nomoreparties.site/";
     public static String REGISTRY = MAIN + "register";
     public static String LOGIN = MAIN + "login";

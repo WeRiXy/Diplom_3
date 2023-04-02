@@ -4,11 +4,10 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
 import ui.page.ConstructorPage;
-import ui.page.PasswordRecoveryPage;
 import ui.settings.Browser;
 
 import static com.codeborne.selenide.Selenide.*;
-import static ui.constants.URL.MAIN;
+import static ui.constants.Url.MAIN;
 
 @Feature(value = "Clicking on links")
 public class SectionTransitionsConstructorTest extends Browser {
@@ -19,8 +18,8 @@ public class SectionTransitionsConstructorTest extends Browser {
         String optionsOfSelectedBurgerSection = open(MAIN, ConstructorPage.class).getOptionsOfSelectedBurgerSection();
 
         page(ConstructorPage.class)
-                .clickSousesSection().shouldBeSelectedSousesSection(optionsOfSelectedBurgerSection)
-                .clickFillingsSection().shouldBeSelectedFillingsSection(optionsOfSelectedBurgerSection)
-                .clickBunsSection().shouldBeSelectedBunsSection(optionsOfSelectedBurgerSection);
+                .clickSousesSection().waitUntilSelectedSousesSection(optionsOfSelectedBurgerSection)
+                .clickFillingsSection().waitUntilSelectedFillingsSection(optionsOfSelectedBurgerSection)
+                .clickBunsSection().waitUntilSelectedBunsSection(optionsOfSelectedBurgerSection);
     }
 }

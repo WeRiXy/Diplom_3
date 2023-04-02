@@ -15,7 +15,7 @@ import ui.settings.Browser;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.webdriver;
 import static com.codeborne.selenide.WebDriverConditions.url;
-import static ui.constants.URL.*;
+import static ui.constants.Url.*;
 
 @Feature(value = "Clicking on links")
 public class ClickingLinkFromProfilePageTest extends Browser {
@@ -39,7 +39,7 @@ public class ClickingLinkFromProfilePageTest extends Browser {
     public void clickConstructorLinkFromProfile() {
         page(HeaderPage.class)
                 .clickConstructorButton()
-                .shouldBeDisplayedCreateOrderButton();
+                .waitUntilDisplayedCreateOrderButton();
 
         webdriver().shouldHave(url(MAIN));
     }
@@ -49,7 +49,7 @@ public class ClickingLinkFromProfilePageTest extends Browser {
     public void clickLogoFromProfile() {
         page(HeaderPage.class)
                 .clickLogoImage()
-                .shouldBeDisplayedCreateOrderButton();
+                .waitUntilDisplayedCreateOrderButton();
 
         webdriver().shouldHave(url(MAIN));
     }
@@ -59,7 +59,7 @@ public class ClickingLinkFromProfilePageTest extends Browser {
     public void logoutUser() {
         page(ProfilePage.class)
                 .clickExitButton()
-                .shouldBeDisplayedLoginButton();
+                .waitUntilDisplayedLoginButton();
 
         webdriver().shouldHave(url(LOGIN));
     }

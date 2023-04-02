@@ -13,22 +13,23 @@ public class ProfilePage extends BasePageClass{
     private SelenideElement profileLink;
     @FindBy(how = How.XPATH,using = "//p[text()='Конструктор']")
     private SelenideElement mainLink;
-
     @FindBy(how = How.XPATH,using = "//button[text()='Выход']")
     private SelenideElement exitButton;
     @Step("Click button exit from profile")
+
     public LoginPage clickExitButton () {
         exitButton.shouldBe(enabled).click();
         return loadLoginPage();
     }
+
     @Step("Click button Constructor")
     public ConstructorPage clickMainLink () {
         mainLink.click();
         return loadConstructorPage();
     }
 
-    @Step("Check profile link is displayed")
-    public ProfilePage shouldBeDisplayedProfileLink() { profileLink.shouldBe(visible); return this; }
+    @Step("Wait until profile link is displayed")
+    public ProfilePage waitUntilDisplayedProfileLink() { profileLink.shouldBe(visible); return this; }
 
     @Override
     public ProfilePage waitForLoadPage() {

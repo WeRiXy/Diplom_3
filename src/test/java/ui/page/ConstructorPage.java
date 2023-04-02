@@ -14,10 +14,8 @@ public class ConstructorPage extends BasePageClass{
     private SelenideElement accountButton;
     @FindBy(how = How.XPATH,using = "//button[text()='Оформить заказ']")
     private SelenideElement createOrderButton;
-
     @FindBy(how = How.XPATH,using = "//*[text()='Соберите бургер']")
     private SelenideElement burgerText;
-
     @FindBy(how = How.XPATH,using = "//span[text()='Булки']/parent::div")
     private SelenideElement bunsSection;
     @FindBy(how = How.XPATH,using = "//span[text()='Соусы']/parent::div")
@@ -27,8 +25,9 @@ public class ConstructorPage extends BasePageClass{
     @FindBy(how = How.XPATH,using = "//section[contains(@class,'BurgerIngredients')]//div[contains(@class,'current')]")
     private SelenideElement selectedSection;
 
-    @Step("Check is displayed button create order")
-    public void shouldBeDisplayedCreateOrderButton() { createOrderButton.shouldBe(visible); }
+    @Step("Wait until is displayed button create order")
+    public void waitUntilDisplayedCreateOrderButton() { createOrderButton.shouldBe(visible); }
+
     @Step("Get options selected burger section")
     public String getOptionsOfSelectedBurgerSection () {
         return selectedSection.getCssValue("box-shadow");
@@ -45,33 +44,37 @@ public class ConstructorPage extends BasePageClass{
         bunsSection.click();
         return this;
     }
+
     @Step("Click on souses section")
     public ConstructorPage clickSousesSection () {
         sousesSection.click();
         return this;
     }
+
     @Step("Click on fillings section")
     public ConstructorPage clickFillingsSection () {
         fillingsSection.click();
         return this;
     }
 
-    @Step("Check active buns section")
-    public ConstructorPage shouldBeSelectedBunsSection(String options) {
+    @Step("Wait until active buns section")
+    public ConstructorPage waitUntilSelectedBunsSection(String options) {
         bunsSection
                 .shouldHave(attributeMatching("class",".*current.*"))
                 .should(match("wait focused",bunsSection -> bunsSection.getCssValue("box-shadow").equals(options)), Duration.ofSeconds(30));
         return this;
     }
-    @Step("Check active souses section")
-    public ConstructorPage shouldBeSelectedSousesSection(String options) {
+
+    @Step("Wait until active souses section")
+    public ConstructorPage waitUntilSelectedSousesSection(String options) {
         sousesSection
                 .shouldHave(attributeMatching("class",".*current.*"))
                 .should(match("wait focused",sousesSection -> sousesSection.getCssValue("box-shadow").equals(options)), Duration.ofSeconds(30));
         return this;
     }
-    @Step("Check active fillings section")
-    public ConstructorPage shouldBeSelectedFillingsSection(String options) {
+
+    @Step("Wait until active fillings section")
+    public ConstructorPage waitUntilSelectedFillingsSection(String options) {
         fillingsSection
                 .shouldHave(attributeMatching("class",".*current.*"))
                 .should(match("wait focused",fillingsSection -> fillingsSection.getCssValue("box-shadow").equals(options)), Duration.ofSeconds(30));

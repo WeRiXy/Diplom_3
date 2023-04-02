@@ -15,25 +15,23 @@ public class RegistryPage extends BasePageClass {
     private SelenideElement nameField;
     @FindBy(how = How.XPATH,using = "//*[text()='Email']/parent::*/input")
     private SelenideElement emailField;
-
     @FindBy(how = How.XPATH,using = "//input[@type='password']")
     private SelenideElement passwordField;
-
     @FindBy(how = How.XPATH,using = "//button[text()='Зарегистрироваться']")
     private SelenideElement signInButton;
-
     @FindBy(how = How.XPATH,using = "//p[text()='Некорректный пароль']")
     private SelenideElement wrongPasswordText;
-
     @FindBy(how = How.XPATH,using = "//a[@href='/login']")
     private SelenideElement loginLink;
 
     private void setName(String name) {
         nameField.setValue(name);
     }
+
     private void setEmail(String email) {
         emailField.setValue(email);
     }
+
     private void setPassword(String password) {
         passwordField.setValue(password);
     }
@@ -61,8 +59,9 @@ public class RegistryPage extends BasePageClass {
         clickSignButton();
         return this;
     }
-    @Step("Check password error is displayed")
-    public RegistryPage shouldBeDisplayedWrongPasswordText() { wrongPasswordText.shouldBe(visible); return this; }
+
+    @Step("Wait until password error is displayed")
+    public RegistryPage waitUntilDisplayedWrongPasswordText() { wrongPasswordText.shouldBe(visible); return this; }
 
 
     @Override

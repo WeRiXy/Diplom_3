@@ -20,10 +20,12 @@ public abstract class Browser {
         WebDriverRunner.setWebDriver(new ChromeDriver());
         driver = Driver.YANDEX;
     }
+
     private void setChromeDriver() {
         System.setProperty("webdriver.chrome.driver", PATH_CHROME_DRIVER);
         driver = Driver.CHROME;
     }
+
     @After
     public void closeYaBrowser()
     {
